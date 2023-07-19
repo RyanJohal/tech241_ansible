@@ -30,5 +30,7 @@ sudo apt upgrade -y```
 18. Check existing files ```ls```
 19. Allow app and db machines through host file ``` sudo nano hosts```
 20. Add following into file ```[web]
-ec2-instance ansible_host=34.240.87.96 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/tech241.pem```
+web-instance ansible_host=34.240.87.96 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/tech241.pem
+[db]
+db-instance ansible_host=34.240.87.96 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/tech241.pem```
 21. Test connection ```sudo ansible web -m ping```
