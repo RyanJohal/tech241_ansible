@@ -112,7 +112,7 @@
   - name: Installing Nginx
     apt: pkg=nginx state=present
 
-# configure reverse proxy 
+# configure reverse proxy
 
   - name: Customize Nginx default configuration file
     lineinfile:
@@ -159,6 +159,11 @@
     command: npm install
     args:
       chdir: "repo/app"
+
+  - name: Seeding database
+    command: node seeds/seed.js
+    args:
+      chdir: /home/ubuntu/repo/app/
 
   - name: Stop PM2 processes
     shell: pm2 kill

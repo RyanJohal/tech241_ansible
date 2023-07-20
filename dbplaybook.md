@@ -24,10 +24,42 @@ steps
   - name: Installing Mongodb
     apt: pkg=mongodb state=present
 
-# ensure the db is running
-
+# enable
+  - name: Enable mongod service
+    service:
+      name: mongodb
+      enabled: yes
 
 # check the status if it is running (adhoc)
+
+
+# add steps to make required changes to mongod.conf to change ip
+  - name: Modify mongod.conf to change bindIp
+    lineinfile:
+      path: /etc/mongodb.conf
+      regexp: '^bind_ip'
+      line: 'bind_ip = 0.0.0.0'
+
+# restart mongodb
+  - name: Restart MongoDB service
+    service:
+      name: mongodb
+      state: restarted
+
+# enable mongodb
+  - name: Enable mongod service
+    service:
+      name: mongodb
+      enabled: yes
+
+
+# go back to app maching, create an env var
+# kill npm if needed
+# restart the app should connect to dp
+# share the posts page in the chat by lunch time
+# complete documentation after lunch till 14:30
+
+
 
 
 
