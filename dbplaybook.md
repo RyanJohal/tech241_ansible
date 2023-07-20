@@ -59,9 +59,4 @@ steps
 # share the posts page in the chat by lunch time
 # complete documentation after lunch till 14:30
 
-
-
-
-
-
 ```

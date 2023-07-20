@@ -137,6 +137,11 @@
       repo: "deb https://deb.nodesource.com/node_12.x {{ ansible_distribution_release }} main"
       state: present
 
+  - name: Add DB_HOST to /etc/environment
+    lineinfile:
+      path: /etc/environment
+      line: 'DB_HOST="mongodb://172.31.32.21:27017/posts"'
+
   - name: Install Node.js
     apt:
       name: nodejs
@@ -172,6 +177,7 @@
     command: pm2 start app.js
     args:
       chdir: "repo/app/"
+
 
 
 ``` 
